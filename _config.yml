@@ -70,7 +70,7 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:leilitech/leilitech.github.io.git
+  repo: git@github.com:webzh/webzh.github.io.git
   branch: master
 
 jsonContent:
