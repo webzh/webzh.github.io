@@ -6,17 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://webzh.github.io">
-  <title>标签 | WebZh的博客</title>
+  <title>MySQL使用mysqlpump全量备份 | WebZh的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="PHP,MySQL,NGINX,CentOS,Web Developer,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="https://webzh.github.io/tags/index.html">
+  <meta name="description" content="根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。根据官方提示:mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a ser">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL使用mysqlpump全量备份">
+<meta property="og:url" content="https://webzh.github.io/2018/02/15/MySQL5-7-8后mysqlpump备份提速/index.html">
 <meta property="og:site_name" content="WebZh的博客">
+<meta property="og:description" content="根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。根据官方提示:mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a ser">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-19T08:14:24.255Z">
+<meta property="og:updated_time" content="2018-02-19T09:07:59.130Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
+<meta name="twitter:title" content="MySQL使用mysqlpump全量备份">
+<meta name="twitter:description" content="根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。根据官方提示:mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a ser">
   
     <link rel="alternative" href="/atom.xml" title="WebZh的博客" type="application/atom+xml">
   
@@ -138,27 +141,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-MySQL5-7-8后mysqlpump备份提速" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      标签
+      MySQL使用mysqlpump全量备份
     </h1>
   
 
         
-        <a href="/tags/index.html" class="archive-article-date">
-  	<time datetime="2017-02-19T07:16:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
+        <a href="/2018/02/15/MySQL5-7-8后mysqlpump备份提速/" class="archive-article-date">
+  	<time datetime="2018-02-15T03:02:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><br>根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。<br><br>根据官方提示:<br>mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a server at least as recent as mysqlpump itself.<br><b>最低版本需要为mysql5.7.8</b><br><br>经过对一台8核CPU进行mysqlpump备份测试。<br><br><b>解压后大约26G的sql文件数据，导出时间大概只需要10分钟即可完成。</b><br><a id="more"></a><br>机器配置为8核CPU。下面为备份语句。<br><pre><br><code><br>/usr/local/mysql/bin/mysqlpump -uroot -p<br>–compress-output=LZ4 –default-parallelism=6 –databases dbname &gt; xxx.sql.lz4<br></code><br></pre><br><br><br>关键参数说明：<br><br>–compress-output 压缩输出的压缩算法 可以使用LZ4或者ZLIB <br><br>–default-parallelism 并行导出，即多线程同时导出，提升备份效率的关键参数，值建议不要超过cpu核心数。<br><br><br>解压数据: <br><br>直接使用mysql自带的解压命令: <pre><code>/usr/local/mysql/bin/lz4_decompress xxx.sql.lz xxx.sql</code></pre><br><br></p>
+
       
 
       
@@ -187,6 +191,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -237,7 +252,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://webzh.github.io/tags/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://webzh.github.io/2018/02/15/MySQL5-7-8后mysqlpump备份提速/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -249,6 +264,20 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2018/02/19/Mysql-Innodb-buffer-poll-size设置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Mysql Innodb buffer poll size设置
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -267,6 +296,16 @@
 </aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -289,7 +328,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
