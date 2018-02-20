@@ -17,21 +17,17 @@ mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assum
 经过对一台8核CPU进行mysqlpump备份测试。<br />
 <b>解压后大约26G的sql文件数据，导出时间大概只需要10分钟即可完成。</b>
 <!--more-->
-机器配置为8核CPU。下面为备份语句。
-<pre>
+
 <code>
+# 逻辑备份命令
 /usr/local/mysql/bin/mysqlpump -uroot -p
 --compress-output=LZ4 --default-parallelism=6 --databases dbname > xxx.sql.lz4
 </code>
-</pre>
-
-
 关键参数说明：<br />
 --compress-output 压缩输出的压缩算法 可以使用LZ4或者ZLIB <br />
 --default-parallelism 并行导出，即多线程同时导出，提升备份效率的关键参数，值建议不要超过cpu核心数。
 
-
 解压数据: <br />
-直接使用mysql自带的解压命令: <pre><code>/usr/local/mysql/bin/lz4_decompress xxx.sql.lz xxx.sql</code></pre>
+直接使用mysql自带的解压命令: <code>/usr/local/mysql/bin/lz4_decompress xxx.sql.lz xxx.sql</code>
 
 </p>
