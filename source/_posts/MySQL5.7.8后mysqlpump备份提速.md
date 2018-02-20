@@ -2,8 +2,7 @@
 title: MySQL使用mysqlpump全量备份
 date: 2018-02-15 11:02:47
 tags: MySQL
-#categories:
-#    Database
+categories: Database
 ---
 
 

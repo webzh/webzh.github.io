@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: WebZh的博客
+title: WebZhou的博客
 subtitle: 坚持每日运动和学习
 description:
 keywords: "PHP,MySQL,NGINX,CentOS,Web Developer,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek"
-author: Laozhou
+author: Web Zhou
 language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://webzh.github.io/
+url: https://webzh.me/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -64,7 +64,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yilia
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -73,6 +73,13 @@ deploy:
   repo: git@github.com:webzh/webzh.github.io.git
   branch: master
 
+## 自动生成sitemap
+sitemap:
+path: sitemap.xml
+baidusitemap:
+path: baidusitemap.xml
+
+#yilia themes params
 jsonContent:
     meta: false
     pages: false
