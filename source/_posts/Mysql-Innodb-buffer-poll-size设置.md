@@ -1,7 +1,6 @@
 ---
 title: Mysql Innodb buffer poll size设置
-tags:
-  Mysql
+tags: MySQL
 ---
 
 

@@ -1,8 +1,7 @@
 ---
 title: MySQL使用mysqlpump全量备份
 date: 2018-02-15 11:02:47
-tags:
-    Mysql
+tags: MySQL
 #categories:
 #    Database
 ---
