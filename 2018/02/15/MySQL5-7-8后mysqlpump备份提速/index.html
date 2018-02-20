@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="WebZh的博客">
 <meta property="og:description" content="根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。根据官方提示:mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a ser">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-20T06:51:08.691Z">
+<meta property="og:updated_time" content="2018-02-20T07:14:54.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL使用mysqlpump全量备份">
 <meta name="twitter:description" content="根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。根据官方提示:mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a ser">
@@ -161,7 +161,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><br>根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。<br><br>根据官方提示:<br>mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a server at least as recent as mysqlpump itself.<br><b>最低版本需要为mysql5.7.8</b><br><br>经过对一台8核CPU进行mysqlpump备份测试。<br><br><b>解压后大约26G的sql文件数据，导出时间大概只需要10分钟即可完成。</b><br><a id="more"></a><br>机器配置为8核CPU。下面为备份语句。<br><pre><br><code><br>/usr/local/mysql/bin/mysqlpump -uroot -p<br>–compress-output=LZ4 –default-parallelism=6 –databases dbname &gt; xxx.sql.lz4<br></code><br></pre><br><br><br>关键参数说明：<br><br>–compress-output 压缩输出的压缩算法 可以使用LZ4或者ZLIB <br><br>–default-parallelism 并行导出，即多线程同时导出，提升备份效率的关键参数，值建议不要超过cpu核心数。<br><br><br>解压数据: <br><br>直接使用mysql自带的解压命令: <pre><code>/usr/local/mysql/bin/lz4_decompress xxx.sql.lz xxx.sql</code></pre><br><br></p>
+        <p><br>根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。<br><br>根据官方提示:<br>mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a server at least as recent as mysqlpump itself.<br><b>最低版本需要为mysql5.7.8</b><br><br>经过对一台8核CPU进行mysqlpump备份测试。<br><br><b>解压后大约26G的sql文件数据，导出时间大概只需要10分钟即可完成。</b><br><a id="more"></a><br><br><code><br># 逻辑备份命令<br>/usr/local/mysql/bin/mysqlpump -uroot -p<br>–compress-output=LZ4 –default-parallelism=6 –databases dbname &gt; xxx.sql.lz4<br></code><br>关键参数说明：<br><br>–compress-output 压缩输出的压缩算法 可以使用LZ4或者ZLIB <br><br>–default-parallelism 并行导出，即多线程同时导出，提升备份效率的关键参数，值建议不要超过cpu核心数。<br><br>解压数据: <br><br>直接使用mysql自带的解压命令: <code>/usr/local/mysql/bin/lz4_decompress xxx.sql.lz xxx.sql</code><br><br></p>
 
       
 
@@ -398,10 +398,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -411,6 +407,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">NodeJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
             
             <div class="clearfix"></div>
