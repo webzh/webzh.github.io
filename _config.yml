@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: WebZhou的博客
+title: WebZhou's Blog
 subtitle: 坚持每日运动和学习
 description: 鄙人姓周，Web Developer 一枚。擅长Web类型项目开发，能够良好的驾驭LNMP架构。
-keywords: "PHP,MySQL,NGINX,CentOS,Web Developer,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek"
+keywords: "PHP,MySQL,NGINX,CentOS,Web Developer,GitHub, js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek, 生活旅行"
 author: Web Zhou
 language: zh-Hans
 timezone: Asia/Shanghai
@@ -63,6 +63,8 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+Plugins:
+- hexo-generator-cname
 ## Themes: https://hexo.io/themes/
 theme: next
 
