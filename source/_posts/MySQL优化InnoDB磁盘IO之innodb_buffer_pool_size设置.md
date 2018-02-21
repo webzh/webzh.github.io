@@ -1,5 +1,6 @@
 ---
 title: MySQL优化InnoDB磁盘I/O之innodb_buffer_pool_size设置
+date: 2017-12-15 21:02:47
 tags: MySQL
 ---
 

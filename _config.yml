@@ -79,6 +79,12 @@ deploy:
 sitemap: sitemap.xml
 baidusitemap: baidusitemap.xml
 
+# algolia_search
+algolia:
+  applicationID: 'V8NNG3DSXZ'
+  indexName: 'webzh.me'
+  chunkSize: 5000
+
 #yilia themes params
 jsonContent:
     meta: false
