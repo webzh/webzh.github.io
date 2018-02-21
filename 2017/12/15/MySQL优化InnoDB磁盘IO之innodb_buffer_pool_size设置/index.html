@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。1. 根据MySQL官方的文档，从5.5之后，innodb_buffer_pool_size 的默认值为128M，最小可设置为5M。2. 如果将一台服务器单">
+<meta name="description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL优化InnoDB磁盘I&#x2F;O之innodb_buffer_pool_size设置">
 <meta property="og:url" content="https://webzh.me/2017/12/15/MySQL优化InnoDB磁盘IO之innodb_buffer_pool_size设置/index.html">
-<meta property="og:site_name" content="WebZhou&#39;s Blog">
-<meta property="og:description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。1. 根据MySQL官方的文档，从5.5之后，innodb_buffer_pool_size 的默认值为128M，最小可设置为5M。2. 如果将一台服务器单">
+<meta property="og:site_name" content="WebZhou&#39;s Notes">
+<meta property="og:description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-21T01:51:55.904Z">
+<meta property="og:updated_time" content="2018-02-21T06:15:57.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL优化InnoDB磁盘I&#x2F;O之innodb_buffer_pool_size设置">
-<meta name="twitter:description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。1. 根据MySQL官方的文档，从5.5之后，innodb_buffer_pool_size 的默认值为128M，最小可设置为5M。2. 如果将一台服务器单">
+<meta name="twitter:description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>MySQL优化InnoDB磁盘I/O之innodb_buffer_pool_size设置 | WebZhou's Blog</title>
+  <title>MySQL优化InnoDB磁盘I/O之innodb_buffer_pool_size设置 | WebZhou's Notes</title>
   
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WebZhou's Blog</span>
+        <span class="site-title">WebZhou's Notes</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -310,7 +310,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebZhou's Blog">
+      <meta itemprop="name" content="WebZhou's Notes">
     </span>
 
     
@@ -341,6 +341,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -368,7 +390,7 @@
       
 
       
-        <p>MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。<br><br>1. 根据MySQL官方的文档，从5.5之后，innodb_buffer_pool_size 的默认值为128M，最小可设置为5M。<br>2. 如果将一台服务器单独作为MySQL来运行，通常建议 innodb_buffer_pool_size 值为总内存的50% ~ 75% 比较适合。<br>3. 根据官方记载，当innodb_buffer_pool_size设置超过1GB的时候， innodb_buffer_pool_instances 的值则为8，所以建议大于1GB的情况下，设置 innodb_buffer_pool_size 为8的倍数比较友好。<br><br></p>
+        <p>MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。<br><a id="more"></a><br>1. 根据MySQL官方的文档，从5.5之后，innodb_buffer_pool_size 的默认值为128M，最小可设置为5M。<br>2. 如果将一台服务器单独作为MySQL来运行，通常建议 innodb_buffer_pool_size 值为总内存的50% ~ 75% 比较适合。<br>3. 根据官方记载，当innodb_buffer_pool_size设置超过1GB的时候， innodb_buffer_pool_instances 的值则为8，所以建议大于1GB的情况下，设置 innodb_buffer_pool_size 为8的倍数比较友好。<br><br></p>
 
       
     </div>
@@ -490,7 +512,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -501,7 +523,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

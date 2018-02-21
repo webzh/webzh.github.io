@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="PHP," />
+  <meta name="keywords" content="PHP,hidef," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="背景通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。这种做法会有很多的缺点，项目管理不便，当人多的时候，无法保证每个开发人员都能做到小心不将config文件上传到线上的情况。##### 环境变量设置可以在php.ini自定义值，并">
-<meta name="keywords" content="PHP">
+<meta name="description" content="背景通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。这种做法会有很多的缺点，项目管理不便，当人多的时候，无法保证每个开发人员都能做到小心不将config文件上传到线上的情况。 环境变量设置可以在php.ini自定义值，并通过PHP">
+<meta name="keywords" content="PHP,hidef">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP项目config配置技巧-自动区分开发生产环境">
 <meta property="og:url" content="https://webzh.me/2018/02/21/PHP项目config配置技巧-自动区分开发生产环境/index.html">
-<meta property="og:site_name" content="WebZhou&#39;s Blog">
-<meta property="og:description" content="背景通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。这种做法会有很多的缺点，项目管理不便，当人多的时候，无法保证每个开发人员都能做到小心不将config文件上传到线上的情况。##### 环境变量设置可以在php.ini自定义值，并">
+<meta property="og:site_name" content="WebZhou&#39;s Notes">
+<meta property="og:description" content="背景通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。这种做法会有很多的缺点，项目管理不便，当人多的时候，无法保证每个开发人员都能做到小心不将config文件上传到线上的情况。 环境变量设置可以在php.ini自定义值，并通过PHP">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-21T03:14:36.497Z">
+<meta property="og:updated_time" content="2018-02-21T06:19:04.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP项目config配置技巧-自动区分开发生产环境">
-<meta name="twitter:description" content="背景通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。这种做法会有很多的缺点，项目管理不便，当人多的时候，无法保证每个开发人员都能做到小心不将config文件上传到线上的情况。##### 环境变量设置可以在php.ini自定义值，并">
+<meta name="twitter:description" content="背景通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。这种做法会有很多的缺点，项目管理不便，当人多的时候，无法保证每个开发人员都能做到小心不将config文件上传到线上的情况。 环境变量设置可以在php.ini自定义值，并通过PHP">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>PHP项目config配置技巧-自动区分开发生产环境 | WebZhou's Blog</title>
+  <title>PHP项目config配置技巧-自动区分开发生产环境 | WebZhou's Notes</title>
   
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WebZhou's Blog</span>
+        <span class="site-title">WebZhou's Notes</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -310,7 +310,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebZhou's Blog">
+      <meta itemprop="name" content="WebZhou's Notes">
     </span>
 
     
@@ -360,17 +360,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web开发/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -401,7 +390,11 @@
       
 
       
-        <h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p><br>通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。<br>比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。<br>这种做法会有很多的缺点，项目管理不便，当人多的时候，无法保证每个开发人员都能做到小心不将config文件上传到线上的情况。<br></p><br>##### 环境变量设置<br><p><br>可以在php.ini自定义值，并通过PHP函数获取到。根据不同环境设置不同的值，并以该值来路由config文件，很好的解决了配置文件单独管理的痛点。<br></p>
+        <h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。<br>这种做法会有很多的缺点，项目管理不便，当人多的时候，无法保证每个开发人员都能做到小心不将config文件上传到线上的情况。</p>
+<h5 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h5><p>可以在php.ini自定义值，并通过PHP函数获取到。根据不同环境设置不同的值，并以该值来路由config文件，很好的解决了配置文件单独管理的痛点。<br><a id="more"></a><br>例如：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim php.ini</span><br><span class="line"><span class="meta">#</span> 增加一行</span><br><span class="line">pro.env=production</span><br></pre></td></tr></table></figure></p>
+<h5 id="PHP项目代码"><a href="#PHP项目代码" class="headerlink" title="PHP项目代码"></a>PHP项目代码</h5><p>修改项目入口文件，我的做法是全局设置一个环境变量常量，以便在项目中任何需要做环境区分的配置或逻辑可以用到。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改项目入口文件index.php 默认环境变量值为develop</span></span><br><span class="line">$env = ($tmpEnv = get_cfg_var(<span class="string">'pro.env'</span>)) ? $tmpEnv : <span class="string">'develop'</span>;</span><br><span class="line"><span class="comment">//定义当前的环境变量</span></span><br><span class="line">defined(<span class="string">'WEB_ENV'</span>) <span class="keyword">or</span> define(<span class="string">'WEB_ENV'</span>, $env);</span><br><span class="line"></span><br><span class="line"><span class="comment"># config目录结构</span></span><br><span class="line">--config</span><br><span class="line">    |- develop</span><br><span class="line">    |- test</span><br><span class="line">    |- production</span><br><span class="line"></span><br><span class="line"><span class="comment"># 至于具体如何加载config，这个就根据各自的项目结构不一样自行去适配。</span></span><br><span class="line"><span class="comment"># 例如加载config的db配置文件，通常这样写</span></span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">'/yourpath/config/'</span> . WEB_ENV . <span class="string">'/db.php'</span>);</span><br></pre></td></tr></table></figure></p>
+<h5 id="结合hidef隐藏关键配置信息"><a href="#结合hidef隐藏关键配置信息" class="headerlink" title="结合hidef隐藏关键配置信息"></a>结合hidef隐藏关键配置信息</h5><p>这个之前的一篇文章介绍过hidef的安装和使用，具体见 <a href="/2018/02/20/PHP替代define扩展hidef使用/">PHP扩展hidef使用</a>。<br>例如db配置我们通常可以这样写<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下代码涉及的常量，均在hidef.ini中已经预定义了。</span></span><br><span class="line">$dbConfig = <span class="keyword">array</span>(</span><br><span class="line">      <span class="string">'mysql_ip'</span> = DB_IP,</span><br><span class="line">      <span class="string">'mysql_port'</span> = DB_PORT,</span><br><span class="line">      <span class="string">'mysql_user'</span> = DB_USER,</span><br><span class="line">      <span class="string">'mysql_password'</span> = DB_PASSWORD</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>按照如上设置，这样大家都拉取到生产环境的config也没有关系，没法得知关键信息的，因为关键的信息都统一在线上的hidef.ini中配置的。</p>
 
       
     </div>
@@ -420,6 +413,8 @@
         <div class="post-tags">
           
             <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/hidef/" rel="tag"># hidef</a>
           
         </div>
       
@@ -532,7 +527,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -543,7 +538,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -586,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#环境变量设置"><span class="nav-number">2.</span> <span class="nav-text">环境变量设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PHP项目代码"><span class="nav-number">3.</span> <span class="nav-text">PHP项目代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#结合hidef隐藏关键配置信息"><span class="nav-number">4.</span> <span class="nav-text">结合hidef隐藏关键配置信息</span></a></li></ol></div>
             
 
           </div>

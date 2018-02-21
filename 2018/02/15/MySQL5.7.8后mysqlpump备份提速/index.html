@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。 根据官方提示: mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a">
+<meta name="description" content="mysqlpump介绍根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。根据官方提示:mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL使用mysqlpump全量备份">
 <meta property="og:url" content="https://webzh.me/2018/02/15/MySQL5.7.8后mysqlpump备份提速/index.html">
-<meta property="og:site_name" content="WebZhou&#39;s Blog">
-<meta property="og:description" content="根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。 根据官方提示: mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a">
+<meta property="og:site_name" content="WebZhou&#39;s Notes">
+<meta property="og:description" content="mysqlpump介绍根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。根据官方提示:mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-20T10:00:57.378Z">
+<meta property="og:updated_time" content="2018-02-21T06:15:36.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL使用mysqlpump全量备份">
-<meta name="twitter:description" content="根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。 根据官方提示: mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a">
+<meta name="twitter:description" content="mysqlpump介绍根据官方文档记录，mysqlpump是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。根据官方提示:mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>MySQL使用mysqlpump全量备份 | WebZhou's Blog</title>
+  <title>MySQL使用mysqlpump全量备份 | WebZhou's Notes</title>
   
 
 
@@ -156,7 +156,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WebZhou's Blog</span>
+        <span class="site-title">WebZhou's Notes</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -310,7 +310,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebZhou's Blog">
+      <meta itemprop="name" content="WebZhou's Notes">
     </span>
 
     
@@ -353,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Database/" itemprop="url" rel="index">
-                    <span itemprop="name">Database</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -390,8 +390,8 @@
       
 
       
-        <p></p><p><br> 根据官方文档记录，<b>mysqlpump</b>是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。<br> 根据官方提示:<br> mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a server at least as recent as mysqlpump itself.<br> 最低版本需要为mysql5.7.8<br> <strong><em> 测试中，导出的总大小约为26G的sql文件数据，利用mysqlpump多线程压缩导出，大概只需要10分钟即可完成。</em></strong><br></p><a id="more"></a><p></p>
-<h5 id="命令使用及说明参数"><a href="#命令使用及说明参数" class="headerlink" title="命令使用及说明参数"></a>命令使用及说明参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 逻辑备份命令</span><br><span class="line">/usr/local/mysql/bin/mysqlpump -uroot -p</span><br><span class="line">--compress-output=LZ4 --default-parallelism=6 --databases dbname &gt; xxx.sql.lz4</span><br><span class="line"></span><br><span class="line"># 关键参数说明：</span><br><span class="line"># --compress-output 压缩输出的压缩算法 可以使用LZ4或者ZLIB</span><br><span class="line"># --default-parallelism 并行导出，即多线程同时导出，提升备份效率的关键参数，值建议不要超过cpu核心数。</span><br><span class="line"></span><br><span class="line"># 解压数据, 直接使用mysql自带的解压命令:</span><br><span class="line">/usr/local/mysql/bin/lz4_decompress xxx.sql.lz xxx.sql</span><br></pre></td></tr></table></figure>
+        <h5 id="mysqlpump介绍"><a href="#mysqlpump介绍" class="headerlink" title="mysqlpump介绍"></a>mysqlpump介绍</h5><p>根据官方文档记录，<b>mysqlpump</b>是mysqldump的变种，相比之前的mysqldump全量备份可以使用多线程，以及自带的压缩输出，不指定压缩方式下，默认使用lz4压缩，备份效率大大提升。<br>根据官方提示:<br>mysqlpump was added in MySQL 5.7.8. It uses recent MySQL features and thus assumes use with a server at least as recent as mysqlpump itself.<br>最低版本需要为mysql5.7.8<br><strong><em> 测试中，导出的总大小约为26G的sql文件数据，利用mysqlpump多线程压缩导出，大概只需要10分钟即可完成。</em></strong><br><a id="more"></a></p>
+<h5 id="命令使用及说明参数"><a href="#命令使用及说明参数" class="headerlink" title="命令使用及说明参数"></a>命令使用及说明参数</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 逻辑备份命令</span><br><span class="line">/usr/local/mysql/bin/mysqlpump -uroot -p</span><br><span class="line">--compress-output=LZ4 --default-parallelism=6 --databases dbname &gt; xxx.sql.lz4</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 关键参数说明：</span><br><span class="line"><span class="meta">#</span> --compress-output 压缩输出的压缩算法 可以使用LZ4或者ZLIB</span><br><span class="line"><span class="meta">#</span> --default-parallelism 并行导出，即多线程同时导出，提升备份效率的关键参数，值建议不要超过cpu核心数。</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 解压数据, 直接使用mysql自带的解压命令:</span><br><span class="line">/usr/local/mysql/bin/lz4_decompress xxx.sql.lz xxx.sql</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -526,7 +526,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -537,7 +537,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -580,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#命令使用及说明参数"><span class="nav-number">1.</span> <span class="nav-text">命令使用及说明参数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#mysqlpump介绍"><span class="nav-number">1.</span> <span class="nav-text">mysqlpump介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命令使用及说明参数"><span class="nav-number">2.</span> <span class="nav-text">命令使用及说明参数</span></a></li></ol></div>
             
 
           </div>
