@@ -1,14 +1,17 @@
 ---
 title: PHP替代define扩展hidef使用
 date: 2018-02-20 16:00:43
-tags: PHP
+tags: [PHP, hidef, 扩展]
+categories: Web开发
 ---
 
-<p>
- 其实真正利用hidef扩展提升define性能，在当下的web项目中，实际意义并不大。
- 但是可以利用其定义在服务器配置文件中，预定义的常量，可以帮助我们实现一些敏感配置的隐藏，如 数据库配置， 支付的密钥等信息，这个会在下一遍文章介绍到。
- 这里主要说的hidef扩展的安装与使用，本次描述建立在 <b>CentOS 6.x</b> 系统的基础上说明的。
-</p><!--more-->
+##### hidef介绍 #####
+根据官方原文翻译的意思大致就是，允许在简单的ini文件中定义用户定义的常量，然后像内部常量一样处理，而没有任何通常的性能损失。
+其实真正利用hidef扩展提升define性能，在当下的web项目中，实际意义并不大。
+但是可以利用其定义在服务器配置文件中，预定义的常量，可以帮助我们实现一些敏感配置的隐藏，如 数据库配置， 支付的密钥等信息，这个会在下一遍文章介绍到。
+这里主要说的hidef扩展的安装与使用，本次描述建立在 <b>CentOS 6.x</b> 系统的基础上说明的。
+<!--more-->
+
 ##### 安装hidef #####
 ```shell
 # 下载hidef
@@ -20,6 +23,7 @@ cd hidef-0.1.13
 /usr/local/php/bin/phpize
 ./configure --enable-hidef --with-php-config=/usr/local/php/bin/php-config && make && make install
 ```
+
 ##### 使用hidef #####
 ```shell
 cd /usr/local/php/etc
@@ -40,7 +44,7 @@ int MYSQL_PORT = 3306
 string MYSQL_USERNAME = online
 ```
 
-##### PHP中使用
+##### PHP中使用 #####
 ```php
 <?php
   echo PIE;

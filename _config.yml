@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: WebZhou's Blog
+title: WebZhou's Notes
 subtitle: 坚持每日运动和学习
 description: Web Developer, 混迹于各个LNMP架构项目开发，爱编程，爱技术，爱分享，并乐此不彼。
 keywords: "PHP, MySQL, NGINX, CentOS,Web Developer, Yii Framework, GitHub, js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Python3, 机器学习, Programmer, Coder, Geek, 生活旅行"
@@ -83,6 +83,7 @@ baidusitemap: baidusitemap.xml
 algolia:
   applicationID: 'V8NNG3DSXZ'
   indexName: 'webzh.me'
+  apiKey: 'fb5aab9229fdfa8b1ef1a0fca5c24ba9'
   chunkSize: 5000
 
 #yilia themes params
