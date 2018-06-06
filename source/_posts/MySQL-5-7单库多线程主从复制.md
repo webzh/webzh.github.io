@@ -1,7 +1,8 @@
 ---
 title: MySQL-5.7单库多线程主从复制
 date: 2018-04-26 15:31:08
-tags:
+tags: MySQL
+categories: 数据库
 ---
 
 参考文章 http://www.unixfbi.com/305.html
