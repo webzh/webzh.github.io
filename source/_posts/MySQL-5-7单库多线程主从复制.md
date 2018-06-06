@@ -23,7 +23,7 @@ relay_log_recovery=ON
 binlog_group_commit_sync_delay = 20
 binlog_group_commit_sync_no_delay_count = 20
 ```
-
+<!--more-->
 ### 主从同步账号设置 ###
 ```shell
 
