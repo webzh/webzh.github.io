@@ -371,15 +371,17 @@
 
       
         
-          
-            <p>参考文章 <a href="http://www.unixfbi.com/305.html" target="_blank" rel="noopener">http://www.unixfbi.com/305.html</a></p>
+          <p>参考文章 <a href="http://www.unixfbi.com/305.html" target="_blank" rel="noopener">http://www.unixfbi.com/305.html</a></p>
 <p>需要对Master和Slave机器的配置文件略作修改。</p>
 <h3 id="master机器修改配置"><a href="#master机器修改配置" class="headerlink" title="master机器修改配置"></a>master机器修改配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> slave</span><br><span class="line">slave-parallel-type=LOGICAL_CLOCK</span><br><span class="line">slave-parallel-workers=4</span><br><span class="line">master_info_repository=TABLE</span><br><span class="line">relay_log_info_repository=TABLE</span><br><span class="line">relay_log_recovery=ON</span><br></pre></td></tr></table></figure>
 <h3 id="slave机器修改配置"><a href="#slave机器修改配置" class="headerlink" title="slave机器修改配置"></a>slave机器修改配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">binlog_group_commit_sync_delay = 20</span><br><span class="line">binlog_group_commit_sync_no_delay_count = 20</span><br></pre></td></tr></table></figure>
-<h3 id="主从同步账号设置"><a href="#主从同步账号设置" class="headerlink" title="主从同步账号设置"></a>主从同步账号设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span> 在主库上建立replication权限账号， 供从库使用该账号进行数据同步复制，注意x.x.x.x换成自己的从库服务器IP</span><br><span class="line">GRANT REPLICATION SLAVE ON *.* TO 'rep_slave'@'x.x.x.x' IDENTIFIED BY '123456';</span><br></pre></td></tr></table></figure>
-<h3 id="备份账号权限设置"><a href="#备份账号权限设置" class="headerlink" title="备份账号权限设置"></a>备份账号权限设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span> mysqlpump 备份数据账号设定，赋予权限。以下为示例，根据自己情况修改响应的参数。</span><br><span class="line">GRANT SELECT, RELOAD, SHOW DATABASES, LOCK TABLES, EXECUTE, SHOW VIEW, EVENT, TRIGGER ON *.* TO 'backup'@'127.0.0.1' IDENTIFIED BY '123456';</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> mysql 只读账号设定，方便查看从库复制状态等。</span><br><span class="line">GRANT SELECT, SHOW DATABASES, LOCK TABLES, REPLICATION CLIENT, SHOW VIEW ON *.* TO 'only_read'@'127.0.0.1' IDENTIFIED BY '123456';</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 为了防止从库数据写入操作，最好在 my.cnf 中配置</span><br><span class="line">read-only = 1</span><br></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/26/MySQL-5-7单库多线程主从复制/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
