@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Web Developer, 混迹于各个LNMP架构项目开发，爱编程，爱技术，爱分享，并乐此不彼。">
+<meta name="description" content="参考文章 http://www.unixfbi.com/305.html 需要对Master和Slave机器的配置文件略作修改。 master机器修改配置123456# slaveslave-parallel-type=LOGICAL_CLOCKslave-parallel-workers=4master_info_repository=TABLErelay_log_info_repository">
 <meta name="keywords" content="PHP, MySQL, NGINX, CentOS,Web Developer, Yii Framework, GitHub, js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Python3, 机器学习, Programmer, Coder, Geek, 生活旅行">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WebZhou&#39;s Notes">
-<meta property="og:url" content="https://webzh.me/tags/PHP/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL-5.7单库多线程主从复制">
+<meta property="og:url" content="https://webzh.me/2018/04/26/MySQL-5-7单库多线程主从复制/index.html">
 <meta property="og:site_name" content="WebZhou&#39;s Notes">
-<meta property="og:description" content="Web Developer, 混迹于各个LNMP架构项目开发，爱编程，爱技术，爱分享，并乐此不彼。">
+<meta property="og:description" content="参考文章 http://www.unixfbi.com/305.html 需要对Master和Slave机器的配置文件略作修改。 master机器修改配置123456# slaveslave-parallel-type=LOGICAL_CLOCKslave-parallel-workers=4master_info_repository=TABLErelay_log_info_repository">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-06T10:35:08.161Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WebZhou&#39;s Notes">
-<meta name="twitter:description" content="Web Developer, 混迹于各个LNMP架构项目开发，爱编程，爱技术，爱分享，并乐此不彼。">
+<meta name="twitter:title" content="MySQL-5.7单库多线程主从复制">
+<meta name="twitter:description" content="参考文章 http://www.unixfbi.com/305.html 需要对Master和Slave机器的配置文件略作修改。 master机器修改配置123456# slaveslave-parallel-type=LOGICAL_CLOCKslave-parallel-workers=4master_info_repository=TABLErelay_log_info_repository">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://webzh.me/tags/PHP/"/>
+  <link rel="canonical" href="https://webzh.me/2018/04/26/MySQL-5-7单库多线程主从复制/"/>
 
 
 
 
 
-  <title>标签: PHP | WebZhou's Notes</title>
+  <title>MySQL-5.7单库多线程主从复制 | WebZhou's Notes</title>
   
 
 
@@ -144,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -286,110 +287,146 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>PHP<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://webzh.me/2018/04/26/MySQL-5-7单库多线程主从复制/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Web Zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebZhou's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/02/21/PHP项目config配置技巧-自动区分开发生产环境/" itemprop="url">
-              
-                <span itemprop="name">PHP项目config配置技巧-自动区分开发生产环境</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">MySQL-5.7单库多线程主从复制</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-21T09:28:40+08:00"
-              content="2018-02-21" >
-          02-21
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T15:31:08+08:00">
+                2018-04-26
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/20/PHP替代define扩展hidef使用/" itemprop="url">
-              
-                <span itemprop="name">PHP替代define扩展hidef使用</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-20T16:00:43+08:00"
-              content="2018-02-20" >
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/20/PHP实时推送数据至前端/" itemprop="url">
-              
-                <span itemprop="name">PHP实时推送数据至前端</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-20T11:49:44+08:00"
-              content="2018-02-20" >
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>参考文章 <a href="http://www.unixfbi.com/305.html" target="_blank" rel="noopener">http://www.unixfbi.com/305.html</a></p>
+<p>需要对Master和Slave机器的配置文件略作修改。</p>
+<h3 id="master机器修改配置"><a href="#master机器修改配置" class="headerlink" title="master机器修改配置"></a>master机器修改配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> slave</span><br><span class="line">slave-parallel-type=LOGICAL_CLOCK</span><br><span class="line">slave-parallel-workers=4</span><br><span class="line">master_info_repository=TABLE</span><br><span class="line">relay_log_info_repository=TABLE</span><br><span class="line">relay_log_recovery=ON</span><br></pre></td></tr></table></figure>
+<h3 id="slave机器修改配置"><a href="#slave机器修改配置" class="headerlink" title="slave机器修改配置"></a>slave机器修改配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">binlog_group_commit_sync_delay = 20</span><br><span class="line">binlog_group_commit_sync_no_delay_count = 20</span><br></pre></td></tr></table></figure>
+<h3 id="主从同步账号设置"><a href="#主从同步账号设置" class="headerlink" title="主从同步账号设置"></a>主从同步账号设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span> 在主库上建立replication权限账号， 供从库使用该账号进行数据同步复制，注意x.x.x.x换成自己的从库服务器IP</span><br><span class="line">GRANT REPLICATION SLAVE ON *.* TO 'rep_slave'@'x.x.x.x' IDENTIFIED BY '123456';</span><br></pre></td></tr></table></figure>
+<h3 id="备份账号权限设置"><a href="#备份账号权限设置" class="headerlink" title="备份账号权限设置"></a>备份账号权限设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span> mysqlpump 备份数据账号设定，赋予权限。以下为示例，根据自己情况修改响应的参数。</span><br><span class="line">GRANT SELECT, RELOAD, SHOW DATABASES, LOCK TABLES, EXECUTE, SHOW VIEW, EVENT, TRIGGER ON *.* TO 'backup'@'127.0.0.1' IDENTIFIED BY '123456';</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> mysql 只读账号设定，方便查看从库复制状态等。</span><br><span class="line">GRANT SELECT, SHOW DATABASES, LOCK TABLES, REPLICATION CLIENT, SHOW VIEW ON *.* TO 'only_read'@'127.0.0.1' IDENTIFIED BY '123456';</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 为了防止从库数据写入操作，最好在 my.cnf 中配置</span><br><span class="line">read-only = 1</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/09/日志切割之NGINX/" rel="next" title="日志切割之NGINX">
+                <i class="fa fa-chevron-left"></i> 日志切割之NGINX
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -397,6 +434,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -417,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -492,6 +542,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#master机器修改配置"><span class="nav-number">1.</span> <span class="nav-text">master机器修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slave机器修改配置"><span class="nav-number">2.</span> <span class="nav-text">slave机器修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主从同步账号设置"><span class="nav-number">3.</span> <span class="nav-text">主从同步账号设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份账号权限设置"><span class="nav-number">4.</span> <span class="nav-text">备份账号权限设置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -632,6 +698,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
