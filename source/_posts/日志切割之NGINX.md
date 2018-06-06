@@ -26,7 +26,7 @@ NGINX默认是没有自动切割日志的功能的，官方简单提供了一个
       sharedscripts
       olddir /data/logs/nginx
       postrotate
-          kill -USR1 `cat /usr/local/nginx/logs/nginx.pid`
+          /etc/init.d/nginx restart
       endscript
     }
 ```
@@ -49,3 +49,6 @@ compress 通过gzip 压缩转储以后的日志
 nocompress 不需要压缩时，用这个参数
 notifempty 如果是空文件的话，不转储
 olddir 转储后的日志文件放入指定的目录
+
+##### 重点说明 #####
+该切割日志方法，不仅仅适用于Nginx，同样也是用其他日志的切割，原理相同。
