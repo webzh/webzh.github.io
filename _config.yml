@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: WebZhou's Notes
-subtitle: 坚持每日运动和学习
+title: WebZh's Notes
+subtitle: 零碎的编程记录
 description: Web Developer, 混迹于各个LNMP架构项目开发，爱编程，爱技术，爱分享，并乐此不彼。
 keywords: "PHP, MySQL, NGINX, CentOS,Web Developer, Yii Framework, GitHub, js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Python3, 机器学习, Programmer, Coder, Geek, 生活旅行"
-author: Web Zhou
+author: Web Zh
 language: zh-Hans
 timezone: Asia/Shanghai
 
