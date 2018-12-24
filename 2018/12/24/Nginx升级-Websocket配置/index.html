@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="MySQL," />
+  <meta name="keywords" content="NGINX," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="参考文章 http://www.unixfbi.com/305.html 需要对Master和Slave机器的配置文件略作修改。 master机器修改配置123456# slaveslave-parallel-type=LOGICAL_CLOCKslave-parallel-workers=4master_info_repository=TABLErelay_log_info_repository">
-<meta name="keywords" content="MySQL">
+<meta name="description" content="背景由于项目中需要支持Websocket，当时一股脑直接nginx配置个反向代理到后端的node监听端口。结果测试中发现报错 websocket nginx failed: Error during WebSocket handshake: ‘Connection’ header value must contain ‘Upgrade’检查配置没有问题，后来仔细阅读官方文档，发现必须nginx 1">
+<meta name="keywords" content="NGINX">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL-5.7单库多线程主从复制">
-<meta property="og:url" content="https://webzh.me/2018/04/26/MySQL-5-7单库多线程主从复制/index.html">
+<meta property="og:title" content="Nginx升级&amp;Websocket配置">
+<meta property="og:url" content="https://webzh.me/2018/12/24/Nginx升级-Websocket配置/index.html">
 <meta property="og:site_name" content="WebZhou&#39;s Notes">
-<meta property="og:description" content="参考文章 http://www.unixfbi.com/305.html 需要对Master和Slave机器的配置文件略作修改。 master机器修改配置123456# slaveslave-parallel-type=LOGICAL_CLOCKslave-parallel-workers=4master_info_repository=TABLErelay_log_info_repository">
+<meta property="og:description" content="背景由于项目中需要支持Websocket，当时一股脑直接nginx配置个反向代理到后端的node监听端口。结果测试中发现报错 websocket nginx failed: Error during WebSocket handshake: ‘Connection’ header value must contain ‘Upgrade’检查配置没有问题，后来仔细阅读官方文档，发现必须nginx 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-06T10:41:44.474Z">
+<meta property="og:updated_time" content="2018-12-24T03:15:09.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL-5.7单库多线程主从复制">
-<meta name="twitter:description" content="参考文章 http://www.unixfbi.com/305.html 需要对Master和Slave机器的配置文件略作修改。 master机器修改配置123456# slaveslave-parallel-type=LOGICAL_CLOCKslave-parallel-workers=4master_info_repository=TABLErelay_log_info_repository">
+<meta name="twitter:title" content="Nginx升级&amp;Websocket配置">
+<meta name="twitter:description" content="背景由于项目中需要支持Websocket，当时一股脑直接nginx配置个反向代理到后端的node监听端口。结果测试中发现报错 websocket nginx failed: Error during WebSocket handshake: ‘Connection’ header value must contain ‘Upgrade’检查配置没有问题，后来仔细阅读官方文档，发现必须nginx 1">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://webzh.me/2018/04/26/MySQL-5-7单库多线程主从复制/"/>
+  <link rel="canonical" href="https://webzh.me/2018/12/24/Nginx升级-Websocket配置/"/>
 
 
 
 
 
-  <title>MySQL-5.7单库多线程主从复制 | WebZhou's Notes</title>
+  <title>Nginx升级&Websocket配置 | WebZhou's Notes</title>
   
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://webzh.me/2018/04/26/MySQL-5-7单库多线程主从复制/">
+    <link itemprop="mainEntityOfPage" href="https://webzh.me/2018/12/24/Nginx升级-Websocket配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Web Zhou">
@@ -318,7 +318,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">MySQL-5.7单库多线程主从复制</h2>
+          <h2 class="post-title" itemprop="name headline">Nginx升级&Websocket配置</h2>
         
 
         <div class="post-meta">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T15:31:08+08:00">
-                2018-04-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T10:51:53+08:00">
+                2018-12-24
               </time>
             
 
@@ -353,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/Web架构/" itemprop="url" rel="index">
+                    <span itemprop="name">Web架构</span>
                   </a>
                 </span>
 
@@ -390,13 +390,11 @@
       
 
       
-        <p>参考文章 <a href="http://www.unixfbi.com/305.html" target="_blank" rel="noopener">http://www.unixfbi.com/305.html</a></p>
-<p>需要对Master和Slave机器的配置文件略作修改。</p>
-<h3 id="master机器修改配置"><a href="#master机器修改配置" class="headerlink" title="master机器修改配置"></a>master机器修改配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> slave</span><br><span class="line">slave-parallel-type=LOGICAL_CLOCK</span><br><span class="line">slave-parallel-workers=4</span><br><span class="line">master_info_repository=TABLE</span><br><span class="line">relay_log_info_repository=TABLE</span><br><span class="line">relay_log_recovery=ON</span><br></pre></td></tr></table></figure>
-<h3 id="slave机器修改配置"><a href="#slave机器修改配置" class="headerlink" title="slave机器修改配置"></a>slave机器修改配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">binlog_group_commit_sync_delay = 20</span><br><span class="line">binlog_group_commit_sync_no_delay_count = 20</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="主从同步账号设置"><a href="#主从同步账号设置" class="headerlink" title="主从同步账号设置"></a>主从同步账号设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span> 在主库上建立replication权限账号， 供从库使用该账号进行数据同步复制，注意x.x.x.x换成自己的从库服务器IP</span><br><span class="line">GRANT REPLICATION SLAVE ON *.* TO 'rep_slave'@'x.x.x.x' IDENTIFIED BY '123456';</span><br></pre></td></tr></table></figure>
-<h3 id="备份账号权限设置"><a href="#备份账号权限设置" class="headerlink" title="备份账号权限设置"></a>备份账号权限设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span> mysqlpump 备份数据账号设定，赋予权限。以下为示例，根据自己情况修改响应的参数。</span><br><span class="line">GRANT SELECT, RELOAD, SHOW DATABASES, LOCK TABLES, EXECUTE, SHOW VIEW, EVENT, TRIGGER ON *.* TO 'backup'@'127.0.0.1' IDENTIFIED BY '123456';</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> mysql 只读账号设定，方便查看从库复制状态等。</span><br><span class="line">GRANT SELECT, SHOW DATABASES, LOCK TABLES, REPLICATION CLIENT, SHOW VIEW ON *.* TO 'only_read'@'127.0.0.1' IDENTIFIED BY '123456';</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 为了防止从库数据写入操作，最好在 my.cnf 中配置</span><br><span class="line">read-only = 1</span><br></pre></td></tr></table></figure>
+        <h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>由于项目中需要支持Websocket，当时一股脑直接nginx配置个反向代理到后端的node监听端口。<br>结果测试中发现报错 websocket nginx failed: Error during WebSocket handshake: ‘Connection’ header value must contain ‘Upgrade’<br>检查配置没有问题，后来仔细阅读官方文档，发现必须nginx 1.3 版本以上。<br>官方原文：NGINX has supported WebSocket since version 1.3 and can act as a reverse proxy and do load balancing of WebSocket applications.</p>
+<h5 id="nginx平滑升级"><a href="#nginx平滑升级" class="headerlink" title="nginx平滑升级"></a>nginx平滑升级</h5><p>基于Centos系统</p>
+<p><br>1，下载高版本nginx。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src &amp;&amp; wget http://nginx.org/download/nginx-1.8.1.tar.gz</span><br></pre></td></tr></table></figure><br><br>2, 安装nginx平滑升级<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src</span><br><span class="line">tar zxvf nginx-1.8.1.tar.gz &amp;&amp; cd nginx-1.8.1</span><br><span class="line">./configure \</span><br><span class="line">--prefix=/data/local/nginx \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-pcre \</span><br><span class="line">--with-zlib= \</span><br><span class="line">--with-openssl= \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--with-file-aio \</span><br><span class="line">--with-http_concat_module \</span><br><span class="line">--with-http_footer_filter_module=shared \</span><br><span class="line">--with-http_stub_status_module \</span><br><span class="line">--with-http_sub_module \</span><br><span class="line">--with-http_realip_module \</span><br><span class="line">--with-http_v2_module</span><br><span class="line"><span class="meta">#</span>  注意这里，不要使用make install</span><br><span class="line">make</span><br><span class="line"><span class="meta">#</span> make 完毕之后，将原有的nginx的sbin目录下nginx 移走</span><br><span class="line"><span class="meta">#</span> 假设您的原有的nginx目录为 /usr/local/nginx</span><br><span class="line">mv /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/old_nginx</span><br><span class="line"><span class="meta">#</span> 将新版本的nginx移动到nginx目录下</span><br><span class="line">cp -r /usr/local/nginx-1.8.1/objs/nginx /usr/local/nginx/sbin/</span><br><span class="line"><span class="meta">#</span> 执行平滑升级</span><br><span class="line">make upgrade</span><br><span class="line"><span class="meta">#</span> 查看 nginx 版本详情</span><br><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure><br><br></p>
+
+<h5 id="nginx反代Websocket配置"><a href="#nginx反代Websocket配置" class="headerlink" title="nginx反代Websocket配置"></a>nginx反代Websocket配置</h5><p>也可以参照官方文档来配置，<a href="https://www.nginx.com/blog/websocket-nginx/" target="_blank" rel="noopener">NGINX as a WebSocket Proxy</a><br><a id="more"></a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    '' close;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">upstream websocket &#123;</span><br><span class="line">    server 127.0.0.1:3000;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    server_name ws.example.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://websocket;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Connection $connection_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -414,7 +412,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/NGINX/" rel="tag"># NGINX</a>
           
         </div>
       
@@ -427,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/09/日志切割之NGINX/" rel="next" title="日志切割之NGINX">
-                <i class="fa fa-chevron-left"></i> 日志切割之NGINX
+              <a href="/2018/04/26/MySQL-5-7单库多线程主从复制/" rel="next" title="MySQL-5.7单库多线程主从复制">
+                <i class="fa fa-chevron-left"></i> MySQL-5.7单库多线程主从复制
               </a>
             
           </div>
@@ -436,10 +434,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/24/Nginx升级-Websocket配置/" rel="prev" title="Nginx升级&Websocket配置">
-                Nginx升级&Websocket配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#master机器修改配置"><span class="nav-number">1.</span> <span class="nav-text">master机器修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slave机器修改配置"><span class="nav-number">2.</span> <span class="nav-text">slave机器修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主从同步账号设置"><span class="nav-number">3.</span> <span class="nav-text">主从同步账号设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备份账号权限设置"><span class="nav-number">4.</span> <span class="nav-text">备份账号权限设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx平滑升级"><span class="nav-number">2.</span> <span class="nav-text">nginx平滑升级</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx反代Websocket配置"><span class="nav-number">3.</span> <span class="nav-text">nginx反代Websocket配置</span></a></li></ol></div>
             
 
           </div>
