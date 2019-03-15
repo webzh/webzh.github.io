@@ -2,7 +2,7 @@
 title: PHP项目config配置技巧-自动区分开发生产环境
 date: 2018-02-21 09:28:40
 tags: [PHP, hidef]
-categories: Web开发
+categories: 编程开发
 ---
 ##### 背景 #####
 通常一个PHP项目，生成环境跟开发环境config必然是不一样的。例如数据库的配置信息一般不会是一样的。比较老式的做法就是不要将本地的config文件上传到svn或者git仓库中，线上的config由运维单独管理配置。

@@ -2,7 +2,7 @@
 title: PHP实时推送数据至前端
 date: 2018-02-20 11:49:44
 tags: [PHP,Javascript,NodeJS]
-categories: Web开发
+categories: 编程开发
 ---
 ##### 背景 #####
 最近的Web项目，需要对用户进行一些实时数据的推送，服务端是NGINX+PHP，无法直接与网页建立实时的通讯。

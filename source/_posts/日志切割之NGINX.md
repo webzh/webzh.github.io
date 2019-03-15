@@ -2,7 +2,7 @@
 title: 日志切割之NGINX
 date: 2018-04-09 16:25:31
 tags: NGINX
-categories: Web架构
+categories: 服务器
 ---
 ##### 背景 #####
 NGINX默认是没有自动切割日志的功能的，官方简单提供了一个shell代码来处理log。具体见 [NGINX日志处理logrotation](https://www.nginx.com/resources/wiki/start/topics/examples/logrotation/)

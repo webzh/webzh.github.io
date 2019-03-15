@@ -2,7 +2,7 @@
 title: PHP替代define扩展hidef使用
 date: 2018-02-20 16:00:43
 tags: [PHP, hidef, 扩展]
-categories: Web开发
+categories: 编程开发
 ---
 
 ##### hidef介绍 #####

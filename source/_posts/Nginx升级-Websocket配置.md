@@ -2,7 +2,7 @@
 title: Nginx升级&Websocket配置
 date: 2018-12-24 10:51:53
 tags: NGINX
-categories: Web架构
+categories: 服务器
 ---
 ##### 背景 #####
 由于项目中需要支持Websocket，当时一股脑直接nginx配置个反向代理到后端的node监听端口。
@@ -22,7 +22,7 @@ cd /usr/local/src && wget http://nginx.org/download/nginx-1.8.1.tar.gz
 cd /usr/local/src
 tar zxvf nginx-1.8.1.tar.gz && cd nginx-1.8.1
 ./configure \
---prefix=/data/local/nginx \
+--prefix=/usr/local/nginx \
 --with-http_ssl_module \
 --with-pcre \
 --with-zlib= \
@@ -35,17 +35,25 @@ tar zxvf nginx-1.8.1.tar.gz && cd nginx-1.8.1
 --with-http_sub_module \
 --with-http_realip_module \
 --with-http_v2_module
-#  注意这里，不要使用make install
+
 make
-# make 完毕之后，将原有的nginx的sbin目录下nginx 移走
-# 假设您的原有的nginx目录为 /usr/local/nginx
+
+```
+注意这里，不要使用make install
+make 完毕之后，将原有的nginx的sbin目录下nginx 移走
+假设您的原有的nginx目录为 /usr/local/nginx
+
+```shell
+
 mv /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/old_nginx
 # 将新版本的nginx移动到nginx目录下
 cp -r /usr/local/nginx-1.8.1/objs/nginx /usr/local/nginx/sbin/
+
 # 执行平滑升级
 make upgrade
 # 查看 nginx 版本详情
 /usr/local/nginx/sbin/nginx -V
+
 ```
 </p>
 
