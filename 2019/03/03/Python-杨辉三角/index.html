@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="MySQL," />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。">
-<meta name="keywords" content="MySQL">
+<meta name="description" content="最近在学习Python，写了个杨辉三角的程序实现玩玩。 杨辉三角前提：每行端点与结尾的数为1.每个数等于它上方两数之和。每行数字左右对称，由1开始逐渐变大。第n行的数字有n项。第n行的m个数可表示为 C(n-1，m-1)，即为从n-1个不同元素中取m-1个元素的组合数。第n行的第m个数和第n-m+1个数相等 ，为组合数性质之一。 第一种基本是大家都会想到的办法，按照每一行，一个个迭代计算出各个位置">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL优化InnoDB磁盘I&#x2F;O之innodb_buffer_pool_size设置">
-<meta property="og:url" content="https://webzh.me/2017/12/15/MySQL优化InnoDB磁盘IO之innodb_buffer_pool_size设置/index.html">
+<meta property="og:title" content="Python-杨辉三角">
+<meta property="og:url" content="https://webzh.me/2019/03/03/Python-杨辉三角/index.html">
 <meta property="og:site_name" content="WebZh&#39;s Notes">
-<meta property="og:description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。">
+<meta property="og:description" content="最近在学习Python，写了个杨辉三角的程序实现玩玩。 杨辉三角前提：每行端点与结尾的数为1.每个数等于它上方两数之和。每行数字左右对称，由1开始逐渐变大。第n行的数字有n项。第n行的m个数可表示为 C(n-1，m-1)，即为从n-1个不同元素中取m-1个元素的组合数。第n行的第m个数和第n-m+1个数相等 ，为组合数性质之一。 第一种基本是大家都会想到的办法，按照每一行，一个个迭代计算出各个位置">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-21T06:15:57.805Z">
+<meta property="og:image" content="https://webzh.me/images/yanghui.jpg">
+<meta property="og:updated_time" content="2019-03-15T14:07:41.958Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL优化InnoDB磁盘I&#x2F;O之innodb_buffer_pool_size设置">
-<meta name="twitter:description" content="MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。">
+<meta name="twitter:title" content="Python-杨辉三角">
+<meta name="twitter:description" content="最近在学习Python，写了个杨辉三角的程序实现玩玩。 杨辉三角前提：每行端点与结尾的数为1.每个数等于它上方两数之和。每行数字左右对称，由1开始逐渐变大。第n行的数字有n项。第n行的m个数可表示为 C(n-1，m-1)，即为从n-1个不同元素中取m-1个元素的组合数。第n行的第m个数和第n-m+1个数相等 ，为组合数性质之一。 第一种基本是大家都会想到的办法，按照每一行，一个个迭代计算出各个位置">
+<meta name="twitter:image" content="https://webzh.me/images/yanghui.jpg">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://webzh.me/2017/12/15/MySQL优化InnoDB磁盘IO之innodb_buffer_pool_size设置/"/>
+  <link rel="canonical" href="https://webzh.me/2019/03/03/Python-杨辉三角/"/>
 
 
 
 
 
-  <title>MySQL优化InnoDB磁盘I/O之innodb_buffer_pool_size设置 | WebZh's Notes</title>
+  <title>Python-杨辉三角 | WebZh's Notes</title>
   
 
 
@@ -301,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://webzh.me/2017/12/15/MySQL优化InnoDB磁盘IO之innodb_buffer_pool_size设置/">
+    <link itemprop="mainEntityOfPage" href="https://webzh.me/2019/03/03/Python-杨辉三角/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Web Zh">
@@ -318,7 +320,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">MySQL优化InnoDB磁盘I/O之innodb_buffer_pool_size设置</h2>
+          <h2 class="post-title" itemprop="name headline">Python-杨辉三角</h2>
         
 
         <div class="post-meta">
@@ -330,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-15T21:02:47+08:00">
-                2017-12-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-03T21:19:08+08:00">
+                2019-03-03
               </time>
             
 
@@ -353,8 +355,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/编程开发/" itemprop="url" rel="index">
+                    <span itemprop="name">编程开发</span>
                   </a>
                 </span>
 
@@ -390,7 +392,11 @@
       
 
       
-        <p>MySQL数据库最重要的一项优化，就是磁盘I/O优化，通常来讲，良好的磁盘I/O优化，能够带来非常显著的性能提升。这里主要描述通过合理利用内存来获得良好的I/O性能，其中一个重要的配置参数就是 innodb_buffer_pool_size 。<br><a id="more"></a><br>1. 根据MySQL官方的文档，从5.5之后，innodb_buffer_pool_size 的默认值为128M，最小可设置为5M。<br>2. 如果将一台服务器单独作为MySQL来运行，通常建议 innodb_buffer_pool_size 值为总内存的50% ~ 75% 比较适合。<br>3. 根据官方记载，当innodb_buffer_pool_size设置超过1GB的时候， innodb_buffer_pool_instances 的值则为8，所以建议大于1GB的情况下，设置 innodb_buffer_pool_size 为8的倍数比较友好。<br><br></p>
+        <p>最近在学习Python，写了个杨辉三角的程序实现玩玩。</p>
+<h5 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h5><p>前提：每行端点与结尾的数为1.<br>每个数等于它上方两数之和。<br>每行数字左右对称，由1开始逐渐变大。<br>第n行的数字有n项。<br>第n行的m个数可表示为 C(n-1，m-1)，即为从n-1个不同元素中取m-1个元素的组合数。<br>第n行的第m个数和第n-m+1个数相等 ，为组合数性质之一。<br><img src="/images/yanghui.jpg" alt=""></p>
+<h5 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h5><p>基本是大家都会想到的办法，按照每一行，一个个迭代计算出各个位置的数字。<br>代码如下：<br><a id="more"></a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">startTime = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">n = <span class="number">4000</span></span><br><span class="line">data = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">        data.append([<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    pre = data[i - <span class="number">1</span>]</span><br><span class="line">    val = [<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, i):</span><br><span class="line">        val.append(pre[j - <span class="number">1</span>] + pre[j])</span><br><span class="line">    val.append(<span class="number">1</span>)</span><br><span class="line">    data.append(val)</span><br><span class="line"></span><br><span class="line">endTime = datetime.datetime.now()</span><br><span class="line">print(<span class="string">'Run time: '</span> + str((endTime - startTime).total_seconds()))</span><br><span class="line"><span class="comment">#print(data)</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h5><p>利用了每行数字个数固定，且左右数字对称的规律，提前定义每一行的列表长度，折半迭代。<br>代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">startTime = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">n = <span class="number">4000</span></span><br><span class="line">data = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">        data.append([<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    pre = data[i - <span class="number">1</span>]</span><br><span class="line">    line = i + <span class="number">1</span></span><br><span class="line">    val = [<span class="number">1</span>] * line</span><br><span class="line">    half = line // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> line % <span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">        val[half] = pre[half - <span class="number">1</span>] + pre[half]</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, half):</span><br><span class="line">        number = pre[j - <span class="number">1</span>] + pre[j]</span><br><span class="line">        val[j] = number</span><br><span class="line">        val[-(j+<span class="number">1</span>)] = number</span><br><span class="line">    data.append(val)</span><br><span class="line"></span><br><span class="line">endTime = datetime.datetime.now()</span><br><span class="line">print(<span class="string">'Run time: '</span> + str((endTime - startTime).total_seconds()))</span><br><span class="line"><span class="comment">#print(data)</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>两种实现方式，在数量级别上来后，执行效率会有很大的差异，明显第二种优于第一种。<br>同样，上述代码已经附上了程序运行的时长记录，以便测试运行效率。</p>
 
       
     </div>
@@ -408,7 +414,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -421,15 +427,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/02/15/各开发语言强弱类型区分/" rel="next" title="各开发语言强弱类型区分">
+                <i class="fa fa-chevron-left"></i> 各开发语言强弱类型区分
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/15/MySQL5.7.8后mysqlpump备份提速/" rel="prev" title="MySQL使用mysqlpump全量备份">
-                MySQL使用mysqlpump全量备份 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -481,8 +487,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -556,6 +571,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#杨辉三角"><span class="nav-number">1.</span> <span class="nav-text">杨辉三角</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第一种"><span class="nav-number">2.</span> <span class="nav-text">第一种</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二种"><span class="nav-number">3.</span> <span class="nav-text">第二种</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
